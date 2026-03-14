@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+int main(int argc, char *argv[]) {
+  setlocale(LC_ALL, "Russian");
+  
+  printf("Ìàòðèöà 3õ3:\n");
+  
+  double a,b,c,d,e,f,g,h,i;
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,1:");
+  scanf("%lf", &a);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,2:");
+  scanf("%lf", &b);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,3:");
+  scanf("%lf", &c);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 2,1:");
+  scanf("%lf", &d);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 2,2:");
+  scanf("%lf", &e);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 2,3:");
+  scanf("%lf", &f);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 3,1:");
+  scanf("%lf", &g);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 3,2:");
+  scanf("%lf", &h);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 3,3:");
+  scanf("%lf", &i);
+  
+  double matr[3][3] = {
+    {a,b,c},
+    {d,e,f},
+    {g,h,i}
+  };
+  
+  double glv = matr[0][0] * matr[1][1] * matr[2][2];
+  
+  double pobo = matr[0][2] * matr[1][1] * matr[2][0];
+   
+  printf("Ãëàâíàÿ äèàãîíàëü\n");
+  printf("glv = %lf\n", glv);
+  
+  printf("Ïîáî÷üíàÿ äèàãîíàëü\n");
+  printf("pobo = %lf\n", pobo);
+  
+  printf("Ìàòðèöà 2õ2:\n");
+  
+  int j,k,m,n;
+  
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,1:");
+  scanf("%d", &j);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,2:");
+  scanf("%d", &k);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 2,1:");
+  scanf("%d", &l);
+  printf("Ââåäèòå çíà÷åíèå ìàòðèöû 2,2:");
+  scanf("%d", &m);
+  
+  int v_l = (j * j) + (k * l);
+  int v_p = (j * k) + (k * m);
+  int n_l = (l * j) + (m * k);
+  int n_p = (l * k) + (m * m);
+  
+  
+  int matri[2][2] = {
+    {v_l, v_p},
+    {n_l, n_p}
+  };
+  
+  printf("%d %d\n", matri[0][0], matri[0][1]);
+  printf("%d %d\n", matri[1][0], matri[1][1]);
+  
+  return 0;
+}
