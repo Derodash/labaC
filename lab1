@@ -1,34 +1,48 @@
 #include <stdio.h>
 #include <math.h>
+#include <locale.h>
 int main(void)
-{
-    int a;
-    scanf("%d", &a);
-    int b;
-    scanf("%d", &b);
-    int c;
-	scanf("%d", &c);
-    int d1 = pow(b,2);
-    int d2= 4*a*c;
-    int d3= d1 - d2;
-    int d = sqrt(d3);
-    if (d == 0)
-    {
-    	int x= (-b) / (2*a);
-    	printf("x = %d \n", x);
-    	return 0;
+{	
+	setlocale(LC_ALL, "Russian");
+	int i = 0;
+	while (i == 0)
+	{
+		int a;
+	    scanf("%d", &a);
+	    int b;
+	    scanf("%d", &b);
+	    int c;
+		scanf("%d", &c);
+	    int d1 = pow(b,2);
+	    int d2= 4*a*c;
+	    int d3= d1 - d2;
+	    int d = sqrt(d3);
+	    if (d == 0)
+	    {
+	    	int x= (-b) / (2*a);
+	    	printf("x = %d \n", x);
+
+		}
+		else if (d < 0)
+	    {
+	    	printf("Корней нет");
+	    
+		}
+	    else if (d > 0)
+		{
+		int a2= 2*a;
+	    int t1= (-b) + d;
+	    int t2= (-b) - d;
+		int x1 = t1 / a2;
+	    int x2 = t2 / a2;
+	    printf("x1= %d \n", x1);
+	    printf("x2= %d \n", x2);
+		}
+	    printf("Хотите продолжить? 1)ДА, 2)Нет \n");
+	    int h;
+		scanf("%d", &h);
+	    if (h == 1) break;
+	    else continue;
+	    return 0;
 	}
-	else if (d < 0)
-    {
-    	printf("êîðíåé íåò");
-    	return 0;
-	}
-    int a2= 2*a;
-    int t1= (-b) + d;
-    int t2= (-b) - d;
-	int x1 = t1 / a2;
-    int x2 = t2 / a2;
-    printf("x1= %d \n", x1);
-    printf("x2= %d \n", x2);
-    return 0;
 }
