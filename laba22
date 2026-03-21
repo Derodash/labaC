@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+int main(int argc, char *argv[]) {
+  setlocale(LC_ALL, "Russian");
+  printf("Ìàòðèöà 3õ3:\n");
+  double a[3][3];
+  double sum_m =0, sum_s =0;
+  printf("Ââåäèòå 9 ÷èñåë: \n");
+  int i, j;
+  for ( i=0; i < 3; i++) 
+  	for (j=0; j < 3; j++) 
+	  scanf("%lf", &a[i][j]);
+  for (i =0; i < 3; i++) {
+  	sum_m += a[i][i];
+  	sum_s += a[i][2-i];
+  }
+  printf("Ãëàâíàÿ äèàãîíàëü: %lf\n", sum_m);
+  printf("Ïîáî÷íàÿ äèàãîíàëü: %lf\n", sum_s);
+  
+//   printf("Ìàòðèöà 2õ2:\n");
+//   int b[2][2], c[2][2];
+//   int k;
+//   printf("Ââåäèòå 4 ÷èñëà: \n");
+//   for ( i=0; i < 2; i++) 
+//  	for (j=0; j < 2; j++) 
+//	  scanf("%d", &b[i][j]);
+//  for (i = 0; i < 2; i++) {
+//  	for (j = 0; j < 2; j++) {
+//  		c[i][j]=0;
+//  		for (k = 0; k < 2; k++) {
+//  			c[i][j] += b[i][k] * b[k][j];
+//		  }
+//	  }
+//  }
+//  printf("\nÊâàäðàò ìàòðèöû: \n");
+//  for (i=0; i<2; i++) {
+//  	for (j=0; j<2; j++) {
+//  		printf("%d ", c[i][j]);
+//	  }
+//	  printf("\n");
+//  }
+  
+  printf("Ìàòðèöà nõn:\n");
+  printf("Ââåäèòå n\n");
+  int n;
+  scanf("%d", &n);
+  double g[n][n];
+  double sum_mi =0, sum_si =0;
+  printf("Ââåäèòå ýëåìåíòû: \n");
+  for ( i=0; i < n; i++) 
+  	for (j=0; j < n; j++) 
+	  scanf("%lf", &g[i][j]);
+  for (i =0; i < 3; i++) {
+  	sum_mi += g[i][i];
+  	sum_si += g[i][n - 1 -i];
+  }
+  printf("Ãëàâíàÿ äèàãîíàëü: %lf\n", sum_mi);
+  printf("Ïîáî÷íàÿ äèàãîíàëü: %lf\n", sum_si);
+  
+  printf("Ìàòðèöà nõn:\n");
+  printf("Ââåäèòå n\n");
+  scanf("%d", &n);
+  int k;
+   int b[n][n], c[n][n];
+   printf("Ââåäèòå ýëåìåíòû ìàòðèöû: \n");
+   for ( i=0; i < n; i++) 
+  	for (j=0; j < n; j++) 
+	  scanf("%d", &b[i][j]);
+  for (i = 0; i < n; i++) {
+  	for (j = 0; j < n; j++) {
+  		c[i][j]=0;
+  		for (k = 0; k < n; k++) {
+  			c[i][j] += b[i][k] * b[k][j];
+		  }
+	  }
+  }
+  printf("\nÊâàäðàò ìàòðèöû: \n");
+  for (i=0; i<n; i++) {
+  	for (j=0; j<n; j++) {
+  		printf("%d ", c[i][j]);
+	  }
+}
+   
+   return 0;
+  }
+  
