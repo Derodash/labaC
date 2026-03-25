@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+    int c;
+	
+	char str[81];
+    int i;
+
+    setlocale(LC_ALL, "Russian");
+	do{
+    printf("Ââåäèòå ñòðîêó: ");
+    fgets(str, 81, stdin);
+
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] == 'a') {
+            str[i] = 'A';
+        } else if (str[i] == 'b') {
+            str[i] = 'B';
+        }
+    }
+
+    printf("Ðåçóëüòàò: %s", str);
+    printf("Õîòèòå ïðîäîëæèòü? 1)Äà  2)Íåò ");
+    scanf(" %d", &c);
+	getchar();
+}while (c != 2);
+    return 0;
+}
