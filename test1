@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+	int n, isPrime = 1;
+
+    printf("Ââåäèòå ÷èñëî: ");
+    scanf("%d", &n);
+
+    if (n <= 1) {
+        isPrime = 0;
+    }
+	int i;
+    for (i = 2; i < n; i++) {
+        if (n % i == 0) {
+            isPrime = 0;
+        }
+    }
+
+    if (isPrime) {
+        printf("Ïðîñòîå ÷èñëî\n");
+    } else {
+        printf("Íå ïðîñòîå\n");
+    }
+
+    return 0;
+}
