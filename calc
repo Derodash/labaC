@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+float add(float a, float b) {
+    return a + b;
+}
+
+float sub(float a, float b) {
+    return a - b;
+}
+
+float mul(float a, float b) {
+    return a * b;
+}
+
+float div(float a, float b) {
+    return a / b;
+}
+
+int main() {
+    float a, b;
+    char op;
+
+    printf("Введите выражение (например: 2 + 3): ");
+    scanf("%f %c %f", &a, &op, &b);
+
+    switch(op) {
+        case '+':
+            printf("Результат: %.2f\n", add(a, b));
+            break;
+        case '-':
+            printf("Результат: %.2f\n", sub(a, b));
+            break;
+        case '*':
+            printf("Результат: %.2f\n", mul(a, b));
+            break;
+        case '/':
+            if (b != 0)
+                printf("Результат: %.2f\n", div(a, b));
+            else
+                printf("Ошибка: деление на ноль\n");
+            break;
+        default:
+            printf("Неизвестная операция\n");
+    }
+
+    return 0;
+}
