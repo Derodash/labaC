@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+    int arr[100];
+    int n = 0;
+    int choice;
+    int i;
+    setlocale(LC_ALL, "");
+
+    do {
+        printf("\n--- ÌÅÍÞ ---\n");
+        printf("1. Ââåñòè ìàññèâ\n");
+        printf("2. Ïîêàçàòü ìàññèâ\n");
+        printf("3. Íàéòè ìèíèìóì è ìàêñèìóì\n");
+        printf("4. Íàéòè ñðåäíåå\n");
+        printf("5. Íàéòè ýëåìåíò\n");
+        printf("6. Ïåðåâåðíóòü ìàññèâ\n");
+        printf("0. Âûõîä\n");
+        printf("Âûáîð: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Ââåäèòå êîëè÷åñòâî ýëåìåíòîâ: ");
+            scanf("%d", &n);
+
+            if (n <= 0 || n > 100) {
+                printf("Îøèáêà!\n");
+                n = 0;
+                continue;
+            }
+
+            printf("Ââåäèòå ýëåìåíòû:\n");
+            for ( i = 0; i < n; i++) {
+                scanf("%d", &arr[i]);
+            }
+        }
+
+        else if (choice == 2) {
+            if (n == 0) {
+                printf("Ìàññèâ ïóñò!\n");
+                continue;
+            }
+
+            printf("Ìàññèâ: ");
+            for (i = 0; i < n; i++) {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
+        }
+
+        else if (choice == 3) {
+            if (n == 0) {
+                printf("Ñíà÷àëà ââåäèòå ìàññèâ!\n");
+                continue;
+            }
+
+            int min = arr[0], max = arr[0];
+
+            for (i = 1; i < n; i++) {
+                if (arr[i] < min) min = arr[i];
+                if (arr[i] > max) max = arr[i];
+            }
+
+            printf("Ìèíèìóì: %d\n", min);
+            printf("Ìàêñèìóì: %d\n", max);
+        }
+
+        else if (choice == 4) {
+            if (n == 0) {
+                printf("Ñíà÷àëà ââåäèòå ìàññèâ!\n");
+                continue;
+            }
+
+            int sum = 0;
+            for ( i = 0; i < n; i++) {
+                sum += arr[i];
+            }
+
+            printf("Ñðåäíåå: %.2f\n", (float)sum / n);
+        }
+
+        else if (choice == 5) {
+            if (n == 0) {
+                printf("Ñíà÷àëà ââåäèòå ìàññèâ!\n");
+                continue;
+            }
+
+            int x, found = 0;
+            printf("Ââåäèòå ÷èñëî äëÿ ïîèñêà: ");
+            scanf("%d", &x);
+
+            for ( i = 0; i < n; i++) {
+                if (arr[i] == x) {
+                    printf("Íàéäåíî íà ïîçèöèè %d\n", i);
+                    found = 1;
+                }
+            }
+
+            if (!found) {
+                printf("Íå íàéäåíî\n");
+            }
+        }
+
+        else if (choice == 6) {
+            if (n == 0) {
+                printf("Ñíà÷àëà ââåäèòå ìàññèâ!\n");
+                continue;
+            }
+
+            for (i = 0; i < n / 2; i++) {
+                int temp = arr[i];
+                arr[i] = arr[n - 1 - i];
+                arr[n - 1 - i] = temp;
+            }
+
+            printf("Ìàññèâ ïåðåâ¸ðíóò\n");
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}
