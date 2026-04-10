@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <locale.h>
+// ôóíêöèÿ äëÿ ïðîâåðêè ãëàñíûõ
+int isvowel(int c) {
+    c = tolower(c);
+    return (c=='a' || c=='e' || c=='i' || c=='o' || c=='u' || c=='y');
+}
+
+int main() {
+    setlocale(LC_ALL, "Rus");
+    char filename[100];
+    FILE *f;
+    int c;
+
+    int total = 0;
+    int lines = 0;
+    int digits = 0;
+    int punct = 0;
+    int spaces = 0;
+    int letters = 0;
+    int lower = 0;
+    int upper = 0;
+    int vowels = 0;
+    int consonants = 0;
+
+    // ââîä èìåíè ôàéëà
+    printf("Ââåäèòå èìÿ ôàéëà: ");
+    scanf("%s", filename);
+
+    // îòêðûòèå ôàéëà
+    f = fopen(filename, "r");
+    if (f == NULL) {
+        printf("Îøèáêà îòêðûòèÿ ôàéëà\n");
+        return 1;
+    }
+
+    // ÷òåíèå ôàéëà ïîñèìâîëüíî
+    while ((c = fgetc(f)) != EOF) {
+        total++;
+
+        if (c == '\n')
+            lines++;
+
+        if (isdigit(c))
+            digits++;
+
+        if (ispunct(c))
+            punct++;
+
+        if (isspace(c))
+            spaces++;
+
+        if (isalpha(c)) {
+            letters++;
+
+            if (islower(c))
+                lower++;
+
+            if (isupper(c))
+                upper++;
+
+            if (isvowel(c))
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+
+    fclose(f);
+
+    // âûâîä ðåçóëüòàòà
+    printf("Âñåãî ñèìâîëîâ: %d\n", total);
+    printf("Ñòðîê: %d\n", lines);
+    printf("Öèôð: %d\n", digits);
+    printf("Çíàêîâ ïðåïèíàíèÿ: %d\n", punct);
+    printf("Ïðîáåëüíûõ ñèìâîëîâ: %d\n", spaces);
+    printf("Áóêâ: %d\n", letters);
+    printf("Ñòðî÷íûõ: %d\n", lower);
+    printf("Ïðîïèñíûõ: %d\n", upper);
+    printf("Ãëàñíûõ: %d\n", vowels);
+    printf("Ñîãëàñíûõ: %d\n", consonants);
+
+    return 0;
+}
