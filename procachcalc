@@ -1,0 +1,97 @@
+#include <stdio.h>
+
+#define MAX_HISTORY 100
+
+typedef struct {
+    float a, b;
+    char op;
+    float result;
+} Operation;
+
+void printMenu() {
+    printf("\n=== Калькулятор ===\n");
+    printf("1. Сложение\n");
+    printf("2. Вычитание\n");
+    printf("3. Умножение\n");
+    printf("4. Деление\n");
+    printf("5. Показать историю\n");
+    printf("0. Выход\n");
+    printf("Выбор: ");
+}
+
+float calculate(float a, float b, int choice, char *op) {
+    switch (choice) {
+        case 1: *op = '+'; return a + b;
+        case 2: *op = '-'; return a - b;
+        case 3: *op = '*'; return a * b;
+        case 4:
+            *op = '/';
+            if (b == 0) {
+                printf("Ошибка: деление на ноль!\n");
+                return 0;
+            }
+            return a / b;
+        default:
+            return 0;
+    }
+}
+
+void printHistory(Operation history[], int count) {
+    if (count == 0) {
+        printf("История пуста.\n");
+        return;
+    }
+
+    printf("\nИстория операций:\n");
+    for (int i = 0; i < count; i++) {
+        printf("%.2f %c %.2f = %.2f\n",
+               history[i].a,
+               history[i].op,
+               history[i].b,
+               history[i].result);
+    }
+}
+
+int main() {
+    Operation history[MAX_HISTORY];
+    int historyCount = 0;
+
+    int choice;
+    float a, b, result;
+    char op;
+
+    while (1) {
+        printMenu();
+        scanf("%d", &choice);
+
+        if (choice == 0) {
+            break;
+        }
+
+        if (choice >= 1 && choice <= 4) {
+            printf("Введите два числа: ");
+            scanf("%f %f", &a, &b);
+
+            result = calculate(a, b, choice, &op);
+
+            printf("Результат: %.2f\n", result);
+
+            // сохранение в историю
+            if (historyCount < MAX_HISTORY) {
+                history[historyCount].a = a;
+                history[historyCount].b = b;
+                history[historyCount].op = op;
+                history[historyCount].result = result;
+                historyCount++;
+            }
+
+        } else if (choice == 5) {
+            printHistory(history, historyCount);
+        } else {
+            printf("Неверный выбор!\n");
+        }
+    }
+
+    printf("Выход из программы.\n");
+    return 0;
+}
