@@ -6,9 +6,7 @@
 
 int main(int argc, char *argv[]) {
   setlocale(LC_ALL, "Russian");
-  
-  printf("Ìàòðèöà 3õ3:\n");
-  
+  printf("Ìàòðèöà 3õ3:\n")
   double a,b,c,d,e,f,g,h,i;
   printf("Ââåäèòå çíà÷åíèå ìàòðèöû 1,1:");
   scanf("%lf", &a);
