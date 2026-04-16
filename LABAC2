@@ -4,6 +4,8 @@
 #include <math.h>
 
 
+
+
 int main(int argc, char *argv[]) {
   setlocale(LC_ALL, "Russian");
   printf("Ìàòðèöà 3õ3:\n")
