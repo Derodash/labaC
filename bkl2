@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
+
 #define LIMIT_WORDS 100000
 #define LIMIT_LEN 256
 
